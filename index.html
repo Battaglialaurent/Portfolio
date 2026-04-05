@@ -112,17 +112,11 @@ opacity:0;pointer-events:none;transition:opacity .38s var(--ease)}
 .on-dark .sn-t{color:var(--cr3)}
 
 /* ══ CURSOR (desktop) ══ */
-#cb,#cd{position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);will-change:transform;display:none}
-/* Anneau extérieur */
-#cb{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;transition:width .45s var(--spring),height .45s var(--spring),border-color .3s,opacity .3s,background .3s}
-/* Point central */
-#cd{width:5px;height:5px;background:var(--gold);border-radius:50%;transition:width .25s var(--spring),height .25s var(--spring),background .3s}
-/* États hover */
-body.cH #cb{width:56px;height:56px;background:rgba(201,168,92,.07);border-color:var(--gold)}
-body.cL #cb{width:44px;height:44px;border-color:var(--gold);background:rgba(201,168,92,.12)}
-body.cL #cd{width:3px;height:3px}
-body.cClick #cb{width:28px;height:28px;background:rgba(201,168,92,.2)}
-body.cClick #cd{width:8px;height:8px}
+#cb,#cd{position:fixed;top:0;left:0;pointer-events:none;z-index:99999;border-radius:50%;transform:translate(-50%,-50%);will-change:transform;display:none}
+#cb{width:34px;height:34px;background:var(--ink);mix-blend-mode:difference;transition:width .5s var(--spring),height .5s var(--spring)}
+#cd{width:4px;height:4px;background:var(--ink);mix-blend-mode:difference}
+body.cH #cb{width:64px;height:64px} body.cL #cb{width:48px;height:48px}
+@media(min-width:900px){body,body *{cursor:none!important}}
 
 /* ══ LAYOUT ══ */
 main{padding-top:56px}
@@ -392,19 +386,8 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
 @keyframes confetti-fall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(300px) rotate(720deg);opacity:0}}
 
 /* ══ FLOATING CURSOR LABEL ══ */
-#cursor-label{
-  position:fixed;pointer-events:none;z-index:9800;
-  background:var(--dk);color:var(--gold);
-  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;
-  padding:5px 12px;border-radius:var(--rb);
-  border:1px solid var(--g2);
-  opacity:0;
-  transform:translate(-50%,-140%) scale(.85);
-  transition:opacity .22s var(--ease),transform .22s var(--ease);
-  white-space:nowrap;
-  box-shadow:0 4px 20px rgba(0,0,0,.18);
-}
-#cursor-label.show{opacity:1;transform:translate(-50%,-140%) scale(1)}
+#cursor-label{position:fixed;pointer-events:none;z-index:9800;background:var(--gold);color:#fff;font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:20px;opacity:0;transform:translate(-50%,-50%);transition:opacity .2s,transform .1s linear;white-space:nowrap}
+#cursor-label.show{opacity:1}
 
 /* ══ SCRAMBLE placeholder ══ */
 .scramble-target{display:inline}
@@ -469,6 +452,7 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
 <nav id="mob-nav" aria-label="Menu mobile">
   <a class="mob-link" href="#hero"     onclick="closeNav()"><span class="mob-num">01</span><span class="mob-title">Home</span><span class="mob-arr">→</span></a>
   <a class="mob-link" href="#projets"  onclick="closeNav()"><span class="mob-num">02</span><span class="mob-title">Projets</span><span class="mob-arr">→</span></a>
+  <a class="mob-link" href="#bacpro"   onclick="closeNav()"><span class="mob-num">02b</span><span class="mob-title">Bac Pro</span><span class="mob-arr">→</span></a>
   <a class="mob-link" href="#reel"     onclick="closeNav()"><span class="mob-num">03</span><span class="mob-title">Vision</span><span class="mob-arr">→</span></a>
   <a class="mob-link" href="#timeline" onclick="closeNav()"><span class="mob-num">04</span><span class="mob-title">Parcours</span><span class="mob-arr">→</span></a>
   <a class="mob-link" href="#skills"   onclick="closeNav()"><span class="mob-num">05</span><span class="mob-title">Skills</span><span class="mob-arr">→</span></a>
@@ -482,6 +466,7 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
   <ul class="tb-nav">
     <li><a href="#hero">Home</a></li>
     <li><a href="#projets">Projets</a></li>
+    <li><a href="#bacpro">Bac Pro</a></li>
     <li><a href="#timeline">Parcours</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -558,12 +543,6 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
     <div class="proj-stack">
 
       <div class="pc pc-feat rv" id="card-maquette">
-        <div class="specs-overlay">
-          <button class="specs-close" onclick="closeSpecs(event,document.getElementById('card-maquette'))">Fermer ×</button>
-          <div class="specs-title">—</div><div class="specs-sub">—</div>
-          <div class="specs-grid"></div>
-          <div class="modal-tags specs-norms" style="margin-top:.85rem"></div>
-        </div>
         <div class="pc-top">
           <span class="pc-num">MISSION 01 — SAFRAN NACELLES</span>
           <span class="pc-co">Aéronautique</span>
@@ -576,7 +555,6 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
         </div>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap">
           <button class="pc-btn" onclick="openModal('maquette')">Voir le détail</button>
-          <button class="pc-btn" onclick="openSpecs('maquette',document.getElementById('card-maquette'))" style="border-color:var(--bd2);background:transparent;color:var(--ink2)">⊡ Spécifications ISO</button>
         </div>
         <div class="pc-stat-row">
           <div class="pc-stat-cell"><div class="pc-sv">93<span style="font-size:.42em;vertical-align:super">%</span></div><div class="pc-sl">Maîtrise SW</div></div>
@@ -601,12 +579,6 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
       </div>
 
       <div class="pc pc-sie rv" id="card-sie">
-        <div class="specs-overlay">
-          <button class="specs-close" onclick="closeSpecs(event,document.getElementById('card-sie'))">Fermer ×</button>
-          <div class="specs-title">—</div><div class="specs-sub">—</div>
-          <div class="specs-grid"></div>
-          <div class="modal-tags specs-norms" style="margin-top:.85rem"></div>
-        </div>
         <div class="pc-top">
           <span class="pc-num">MISSION 02 — SIE ELECTRIC</span>
           <span class="pc-co">Électrotechnique</span>
@@ -614,24 +586,17 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
         <h3 class="pc-ti">Animation<br><em>Cinématique</em></h3>
         <p class="pc-body">Production d'animations cinématiques et vidéos techniques pour illustrer le fonctionnement d'équipements électriques. Catia 3D, mécanismes articulés, montage vidéo client.</p>
         <div class="pc-tags">
-          <span class="ptag">Solidworks</span><span class="ptag">Animation</span>
+          <span class="ptag">Catia 3D</span><span class="ptag">Animation</span>
           <span class="ptag">Vidéo technique</span><span class="ptag">Montage</span>
         </div>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap">
           <button class="pc-btn" onclick="openModal('mission2')">Voir la vidéo</button>
-          <button class="pc-btn" onclick="openSpecs('mission2',document.getElementById('card-sie'))" style="border-color:var(--bd2);background:transparent;color:var(--ink2)">⊡ Spécifications</button>
         </div>
         <div class="pc-ghost">02</div>
         <div class="pc-meta">2024 · 8 semaines</div>
       </div>
 
       <div class="pc pc-lhsm rv" id="card-topo">
-        <div class="specs-overlay">
-          <button class="specs-close" onclick="closeSpecs(event,document.getElementById('card-topo'))">Fermer ×</button>
-          <div class="specs-title">—</div><div class="specs-sub">—</div>
-          <div class="specs-grid"></div>
-          <div class="modal-tags specs-norms" style="margin-top:.85rem"></div>
-        </div>
         <div class="pc-top">
           <span class="pc-num">MISSION 03 — LE HAVRE MÉTROPOLE</span>
           <span class="pc-co">Collectivité</span>
@@ -644,10 +609,63 @@ footer{background:var(--dk2);padding:1.5rem 1.25rem;padding-bottom:calc(1.5rem +
         </div>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap">
           <button class="pc-btn" onclick="openModal('animation')">Voir les rendus</button>
-          <button class="pc-btn" onclick="openSpecs('animation',document.getElementById('card-topo'))" style="border-color:var(--bd2);background:transparent;color:var(--ink2)">⊡ Référentiels GIS</button>
         </div>
         <div class="pc-ghost">03</div>
         <div class="pc-meta">2024 · 5 semaines</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 02b PROJETS BAC PRO -->
+<section id="bacpro" class="sec lt-sec" data-color="light" style="align-items:flex-start;min-height:auto">
+  <div class="inner">
+    <div class="sec-label rv"><span class="sec-num">02b</span><div class="sec-rule"></div><span class="sec-tag">Projets Bac Pro EDPI</span></div>
+    <div class="proj-stack" style="display:flex;flex-direction:column;gap:8px">
+
+      <!-- U34 -->
+      <div class="pc rv" style="background:linear-gradient(135deg,#fffdf5,var(--card))">
+        <div class="pc-top">
+          <span class="pc-num">PROJET U34 — BAC PRO EDPI</span>
+          <span class="pc-co">Conception industrielle</span>
+        </div>
+        <h3 class="pc-ti">Projet <em>U34</em></h3>
+        <p class="pc-body">Projet de conception industrielle réalisé dans le cadre du Bac Pro EDPI. Modélisation, mise en plan et analyse fonctionnelle d'un produit industriel.</p>
+        <div class="pc-tags">
+          <span class="ptag">SolidWorks</span><span class="ptag">Mise en plan</span>
+          <span class="ptag">Analyse fonctionnelle</span><span class="ptag">Bac Pro EDPI</span>
+        </div>
+        <div style="position:relative;width:100%;height:0;padding-top:56.25%;margin-top:1rem;border-radius:10px;overflow:hidden;border:1px solid var(--bd)">
+          <iframe loading="lazy" style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;padding:0;margin:0"
+            src="https://www.canva.com/design/DAGIAh1dUYk/sFDn6dk3cU9S9uRSPXC2Xg/view?embed"
+            allowfullscreen allow="fullscreen">
+          </iframe>
+        </div>
+        <div class="pc-ghost">U34</div>
+        <div class="pc-meta">2023–2024 · Bac Pro</div>
+      </div>
+
+      <!-- CHEF D'OEUVRE -->
+      <div class="pc rv" style="background:linear-gradient(135deg,#fffdf5,var(--card))">
+        <div class="pc-top">
+          <span class="pc-num">CHEF D'ŒUVRE — BAC PRO EDPI</span>
+          <span class="pc-co">Projet final</span>
+        </div>
+        <h3 class="pc-ti">Chef <em>d'Œuvre</em></h3>
+        <p class="pc-body">Projet de fin de Bac Pro EDPI — réalisation complète démontrant la maîtrise des compétences en conception et définition de produits industriels.</p>
+        <div class="pc-tags">
+          <span class="ptag">CAO</span><span class="ptag">Dossier technique</span>
+          <span class="ptag">Présentation</span><span class="ptag">Mention Bien</span>
+        </div>
+        <div style="position:relative;width:100%;height:0;padding-top:56.25%;margin-top:1rem;border-radius:10px;overflow:hidden;border:1px solid var(--bd)">
+          <iframe loading="lazy" style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;padding:0;margin:0"
+            src="https://www.canva.com/design/DAGFByvrm_A/_SBJUbFxZK90-42_RH1u4w/view?embed"
+            allowfullscreen allow="fullscreen">
+          </iframe>
+        </div>
+        <div class="pc-ghost">CO</div>
+        <div class="pc-meta">2023–2024 · Bac Pro</div>
       </div>
 
     </div>
@@ -833,12 +851,8 @@ const MODALS = {
   mission2:{
     label:'Mission 02 · SIE Electric', title:'Vidéo Technique & Animation',
     body:`<p>Production d'<strong>animations cinématiques 3D</strong> et de vidéos techniques pour illustrer le fonctionnement d'équipements électriques industriels.</p>
-<h4>Aperçu animation</h4>
-<div class="m-video" style="position:relative">
-  <img src="sie.gif" alt="Animation cinématique SIE Electric" style="width:100%;height:100%;object-fit:cover;display:block"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-  <div class="m-vph" style="display:none;flex-direction:column;align-items:center;justify-content:center;position:absolute;inset:0"><div class="vi">▶</div><p>Déposer sie.gif dans le dossier du projet</p></div>
-</div>
+<h4>Lecteur vidéo</h4>
+<div class="m-video"><div class="m-vph"><div class="vi">▶</div><p>Déposer video_sie_electric.mp4 dans le dossier du projet</p></div></div>
 <div class="m-grid">
   <div class="m-cell"><div class="m-lab">Logiciel</div><div class="m-val">Catia 3D</div></div>
   <div class="m-cell"><div class="m-lab">Durée</div><div class="m-val">8 semaines</div></div>
@@ -1024,17 +1038,8 @@ function boot(){
   if(desk){
     const cb=document.getElementById('cb'),cd=document.getElementById('cd');
     let mx=innerWidth/2,my=innerHeight/2,bx=mx,by=my;
-    let visible=false;
-    function showCursor(){if(!visible){visible=true;cb.style.opacity='1';cd.style.opacity='1';}}
-    function hideCursor(){visible=false;cb.style.opacity='0';cd.style.opacity='0';}
-    cb.style.opacity='0';cd.style.opacity='0';
-    cb.style.transition+= ',opacity .3s';cd.style.transition+=',opacity .3s';
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;showCursor();});
-    document.addEventListener('mouseleave',hideCursor);
-    document.addEventListener('mouseenter',showCursor);
-    document.addEventListener('mousedown',()=>document.body.classList.add('cClick'));
-    document.addEventListener('mouseup',()=>document.body.classList.remove('cClick'));
-    (function loop(){bx+=(mx-bx)*.10;by+=(my-by)*.10;cb.style.transform=`translate(${bx}px,${by}px) translate(-50%,-50%)`;cd.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function loop(){bx+=(mx-bx)*.09;by+=(my-by)*.09;cb.style.transform=`translate(${bx}px,${by}px) translate(-50%,-50%)`;cd.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
     const setC=c=>document.body.className=c?'c'+c:'';
     document.querySelectorAll('.pc,.sk-card,.pass-item,.form-item,.hab-item,.tl-item').forEach(el=>{el.addEventListener('mouseenter',()=>setC('H'));el.addEventListener('mouseleave',()=>setC(''));});
     document.querySelectorAll('a,button,.pc-btn,.htag,.ptag,.f-badge,.acc-btn,.tl-badge,.ctlink').forEach(el=>{el.addEventListener('mouseenter',()=>setC('L'));el.addEventListener('mouseleave',()=>setC(''));});
@@ -1074,7 +1079,7 @@ function boot(){
     document.querySelectorAll('.ctlink').forEach(el=>el.addEventListener('mouseleave',()=>cl.classList.remove('show')));
     document.querySelectorAll('.pc-btn[onclick*="openModal"]').forEach(el=>el.addEventListener('mouseenter',()=>{cl.textContent='Lire le détail';cl.classList.add('show');}));
     document.querySelectorAll('.pc-btn[onclick*="openModal"]').forEach(el=>el.addEventListener('mouseleave',()=>cl.classList.remove('show')));
-    document.addEventListener('mousemove',e=>{cl.style.left=e.clientX+'px';cl.style.top=(e.clientY-18)+'px';});
+    document.addEventListener('mousemove',e=>{cl.style.left=e.clientX+'px';cl.style.top=(e.clientY-28)+'px';});
   }
 
   /* ══ SCROLL REVEALS (enhanced stagger) ══ */
