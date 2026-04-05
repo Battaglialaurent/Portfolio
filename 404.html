@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur 404 — Système Interrompu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05050a;
+            --gold: #c9aa6e;
+            --red: #ff5f56;
+            --dim: rgba(200, 208, 216, 0.3);
+        }
+
+        body {
+            background: var(--bg);
+            color: #fff;
+            font-family: 'DM Mono', monospace;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .error-code {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(80px, 20vw, 180px);
+            color: var(--gold);
+            line-height: 1;
+            margin: 0;
+            position: relative;
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        .status-msg {
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .description {
+            max-width: 500px;
+            color: var(--dim);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            padding: 0 20px;
+        }
+
+        .btn-return {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-return:hover {
+            background: var(--gold);
+            color: var(--bg);
+            box-shadow: 0 0 20px rgba(201, 170, 110, 0.4);
+        }
+
+        /* Effet scanline industriel */
+        body::after {
+            content: " ";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 11, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="error-code">404</h1>
+    <div class="status-msg">Défaut d'adressage — Système Critique</div>
+    
+    <p class="description">
+        L'unité de recherche n'a pas pu localiser le composant demandé. 
+        Le lien est peut-être obsolète ou l'accès a été révoqué par l'administrateur.
+    </p>
+
+    <a href="index.html" class="btn-return">Réinitialiser la session</a>
+
+    <div style="margin-top: 4rem; font-size: 0.6rem; color: var(--dim);">
+        CORE INTERFACE v2.6 // Axe Seine / Le Havre
+    </div>
+
+</body>
+</html>
