@@ -55,6 +55,3 @@ Mon travail est organisé selon les standards de rigueur industrielle :
 * 💼 **LinkedIn :** [Laurent Battaglia](https://www.linkedin.com/in/laurent-battaglia-7bb813369)
 
 ---
-<div align="right">
-  <i>Généré par CORE v2.6 // Standard Industriel Appliqué</i>
-</div>
